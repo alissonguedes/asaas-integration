@@ -17,12 +17,15 @@
 	},
 	"require": {
 		"php": ">=8.4",
-		"illuminate/support": "^11.0"
+		"illuminate/support": "^11.0",
+		"alissonguedes/asaas-integration": "dev-master"
 	},
 	"repositories": {
 		"asaas": {
 			"type": "path",
 			"url": "./alissonguedes/asaas-integration"
 		}
-	}
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
