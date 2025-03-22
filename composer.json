@@ -1,0 +1,28 @@
+{
+	"name": "alissonguedes/asaas-integration",
+	"description": "Pacote de integração com o Asaas",
+	"type": "library",
+	"license": "MIT",
+	"autoload": {
+		"psr-4": {
+			"AlissonGuedes\\AsaasIntegration\\": "package/alisson-guedes/asaas-integration/src/"
+		}
+	},
+	"extra": {
+		"laravel": {
+			"providers": [
+				"AlissonGuedes\\AsaasIntegration\\AsaasServiceProvider"
+			]
+		}
+	},
+	"require": {
+		"php": ">=8.4",
+		"illuminate/support": "^11.0"
+	},
+	"repositories": {
+		"asaas": {
+			"type": "path",
+			"url": "./package/alisson-guedes/asaas-integration"
+		}
+	}
+}
