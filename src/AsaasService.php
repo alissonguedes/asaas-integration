@@ -1,9 +1,8 @@
 <?php
-
 namespace AlissonGuedes\AsaasIntegration;
 
-use Illuminate\Support\Facades\Http;
 use AlissonGuedes\AsaasIntegration\AsaasHttpInterface;
+use Illuminate\Support\Facades\Http;
 
 class AsaasService implements AsaasHttpInterface {
 
@@ -12,10 +11,11 @@ class AsaasService implements AsaasHttpInterface {
 	protected string $production;
 	protected string $version;
 
-	public function __construct () {
+	public function __construct() {
 		$this->version    = config('asaas.version');
 		$this->production = config('asaas.enviroment') !== 'sandbox';
 		$this->baseUrl    = config('asaas.url') . '/' . config('asaas.version') . '/';
+		$this->apiKey     = config('asaas.api_key');
 	}
 
 	public function get(string $endpoint, array $queryParams = []): array {
@@ -34,8 +34,8 @@ class AsaasService implements AsaasHttpInterface {
 		return $this->request('DELETE', $endpoint);
 	}
 
-	public function request(string $method, string $endpoint, array $data = []): array{
-		$response = Http::withHeaders($this->headers())->{$method}($this->baseUrl . $enpoint, $data);
+	public function request(string $method, string $endpoint, array $data = []): array {
+		$response = Http::withHeaders($this->headers())->{$method}($this->baseUrl . $endpoint, $data);
 		return $this->handleResponse($response);
 	}
 
@@ -43,19 +43,19 @@ class AsaasService implements AsaasHttpInterface {
 		return [
 			'accept'       => 'application/json',
 			'content-type' => 'application/json',
-			'access_token' => $this->apiKey
+			'access_token' => $this->apiKey,
 		];
 	}
 
 	protected function handleResponse($response): array {
-		if($response->successful()) {
+		if ($response->successful()) {
 			return $response->json();
 		}
 
 		return [
 			'error'   => true,
 			'status'  => $response->status(),
-			'message' => $response->json()['message'] ?? 'Unknown error'
+			'message' => $response->json()['message'] ?? 'Unknown error',
 		];
 	}
 }
