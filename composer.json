@@ -5,7 +5,7 @@
 	"license": "MIT",
 	"autoload": {
 		"psr-4": {
-			"AlissonGuedes\\AsaasIntegration\\": "package/alisson-guedes/asaas-integration/src/"
+			"AlissonGuedes\\AsaasIntegration\\": "alissonguedes/asaas-integration/src/"
 		}
 	},
 	"extra": {
@@ -19,11 +19,10 @@
 		"php": ">=8.4",
 		"illuminate/support": "^11.0"
 	},
-	"minimum-stability": "stable",
 	"repositories": {
 		"asaas": {
 			"type": "path",
-			"url": "./package/alisson-guedes/asaas-integration"
+			"url": "./alissonguedes/asaas-integration"
 		}
 	}
 }
