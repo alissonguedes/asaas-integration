@@ -11,8 +11,12 @@ class Asaas {
 		self::$asaas = new AsaasService();
 	}
 
-	public static function get($endpoint, $data) {
+	public static function get($endpoint, $data = []) {
 		return self::$asaas->get($endpoint, $data);
+	}
+
+	public static function post($endpoint, $data = []) {
+		return self::$asaas->post($endpoint, $data);
 	}
 
 	public static function create($endpoint, $data) {
