@@ -13,13 +13,14 @@ class Boleto
 		$this->asaas = new Asaas;
 	}
 
-	public function get(string $cpfCnpj = null, int $offset = 0, int $limit = 10): array | bool
+	public function get(string $id = null, string $resource = 'billingInfo', int $offset = 0, int $limit = 10): array | bool
 	{
-		$get = Asaas::get('payments', ['cpfCnpj' => $cpfCnpj]);
-		if ($get['totalCount'] > 0) {
-			return $get['data'];
-		}
-		return false;
+		$get = Asaas::get("payments/{$id}/{$resource}");
+		// if ($get['totalCount'] > 0) {
+		// 	return $get['data'];
+		// }
+		// return false;
+		dd($get);
 	}
 
 	public function create(array $data): array | bool
