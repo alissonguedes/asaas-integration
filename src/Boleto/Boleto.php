@@ -19,6 +19,7 @@ class Boleto
 		$get = Asaas::get($url);
 		return $get;
 	}
+
 	/**
 	 * Recupera o status do pagamento do boleto
 	 */
